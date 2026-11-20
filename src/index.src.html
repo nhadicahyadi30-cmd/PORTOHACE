@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nurahmad Hadi Cahyadi</title>
-<meta name="description" content="Portfolio of Nurahmad Hadi Cahyadi: electrical, maintenance and utility supervisor in manufacturing. Career, projects, skills, achievements and certifications.">
+<meta name="description" content="Portfolio of Nurahmad Hadi Cahyadi: electrical, maintenance and utility supervisor in manufacturing. Career, projects, skills, education and certifications.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -526,7 +526,7 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
       <a href="#career" data-route="career">Career</a>
       <a href="#projects" data-route="projects">Projects</a>
       <a href="#skills" data-route="skills">Skills</a>
-      <a href="#achievements" data-route="achievements">Achievements</a>
+      <a href="#education" data-route="education">Education</a>
       <a href="#training" data-route="training">Training</a>
     </nav>
     <button class="tgl" id="theme" type="button" aria-label="Switch to light mode"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg></button>
@@ -671,7 +671,23 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
   </div>
 </section>
 
-<!-- ACHIEVEMENTS -->
+<!-- EDUCATION -->
+<section class="page" id="page-education" hidden>
+  <div class="wrap">
+    <div class="ph"><span class="lab g">05 / Education</span><h1>Education</h1><p>Applied engineering education in automation, with a final project funded in collaboration with BRIN.</p></div>
+    <div class="sbar">
+      <div class="stat"><b>3.49</b><span>GPA out of 4.00</span></div>
+      <div class="stat"><b>D4</b><span>Automation Engineering</span></div>
+      <div class="stat"><b>BRIN</b><span>Final project research funding</span></div>
+    </div>
+    <div class="edu">
+      <div><span class="lab g">Degree</span><h2>D4 Automation Engineering</h2><p>Politeknik Perkapalan Negeri Surabaya, 2020 to 2024. GPA 3.49 / 4.00.</p><p>Final project received research funding in collaboration with the National Research and Innovation Agency (BRIN).</p></div>
+      <div><span class="lab">Timeline</span><div class="big">2020<br>2024</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS (dormant: no route/nav yet. To be revived as a page covering awards, organizations, publications, etc.) -->
 <section class="page" id="page-achievements" hidden>
   <div class="wrap">
     <div class="ph"><span class="lab g">05 / Achievements</span><h1>Achievements</h1><p>National and international robotics, research and innovation results from 2022 to 2025.</p></div>
@@ -687,11 +703,7 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
 <!-- TRAINING -->
 <section class="page" id="page-training" hidden>
   <div class="wrap">
-    <div class="ph"><span class="lab g">06 / Training</span><h1>Training &amp; certification</h1><p>Formal education plus national certification and bootcamps in automation, solar energy and IoT.</p></div>
-    <div class="edu">
-      <div><span class="lab g">Education</span><h2>D4 Automation Engineering</h2><p>Politeknik Perkapalan Negeri Surabaya, 2020 to 2024.</p><p>Final project received research funding in collaboration with the National Research and Innovation Agency (BRIN).</p></div>
-      <div><span class="lab">Timeline</span><div class="big">2020<br>2024</div></div>
-    </div>
+    <div class="ph"><span class="lab g">06 / Training</span><h1>Training &amp; certification</h1><p>National certification and bootcamps in automation, solar energy and IoT.</p></div>
     <div class="sh"><h2>Certifications</h2></div>
     <div class="certs" id="certs"></div>
   </div>
@@ -885,8 +897,8 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
   setTimeout(finish,DUR+2500);
 
   /* ================= ROUTING ================= */
-  var routes=["about","career","projects","skills","achievements","training"];
-  var titles={about:"About",career:"Career",projects:"Projects",skills:"Skills",achievements:"Achievements",training:"Training"};
+  var routes=["about","career","projects","skills","education","training"];
+  var titles={about:"About",career:"Career",projects:"Projects",skills:"Skills",education:"Education",training:"Training"};
   var netOn=false;
   function go(first){
     var r=location.hash.slice(1); if(routes.indexOf(r)<0) r="about";

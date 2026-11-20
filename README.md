@@ -22,6 +22,7 @@ Nama file CV: `cv/CV_Nurahmad_Hadi_Cahyadi_{Maintenance,Automation,Production}.p
 - Lanyard: Verlet physics, tali bisa mengendur, sudut card dibatasi ±1,15 rad agar tidak terbalik
 
 ## To-do
+- [ ] Halaman Achievements baru (penghargaan, organisasi, publikasi, dll; kode lama masih ada, tanpa menu)
 - [ ] Foto proyek
 - [ ] Hasil kerja Production Engineer
 - [ ] Testimoni
