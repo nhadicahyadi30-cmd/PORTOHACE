@@ -133,6 +133,10 @@ ul{margin:0}
 #net{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hero .wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:30px;align-items:center;padding-top:70px;padding-bottom:70px;min-height:calc(100vh - 62px)}
 .status{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--g)}
+.strow{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.status.fl-s{text-decoration:none;transition:background .25s,color .25s,border-color .25s}
+.status.fl-s:hover{background:var(--g);color:var(--on-g);border-color:var(--g)}
+.status.fl-s:hover i{background:var(--on-g);box-shadow:none}
 .status i{width:8px;height:8px;background:var(--g);box-shadow:0 0 12px var(--g);animation:blink 1.8s infinite}
 @keyframes blink{50%{opacity:.25}}
 .name{margin-top:24px;font-size:clamp(60px,10.5vw,148px)}
@@ -551,14 +555,13 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
     <canvas id="net" aria-hidden="true"></canvas>
     <div class="wrap">
       <div>
-        <span class="status"><i></i>Open to new roles</span>
+        <div class="strow"><span class="status"><i></i>Open to new roles</span><a class="status fl-s" href="#freelance"><i></i>Open for freelance</a></div>
         <h1 class="big name">Nurahmad <span>Hadi Cahyadi</span></h1>
         <p class="role"><span class="sr">Electrical, Maintenance and Utility Supervisor. </span><span aria-hidden="true">Specialising in <b id="rot">electrical systems</b><span class="caret"></span></span></p>
         <p class="lead">Engineering professional with 2 years of experience in manufacturing, spanning production, maintenance, and electrical &amp; utility operations. Proven in leading technical teams, improving equipment reliability, and delivering automation and digital solutions that reduce costs and increase productivity. Strong foundation in industrial automation, control systems, and root cause analysis, with a commitment to continuous improvement and operational excellence.</p>
         <div class="cta">
           <div data-cvmenu></div>
           <a class="btn" href="https://www.linkedin.com/in/hadicahyadi" target="_blank" rel="noopener">LinkedIn <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11 11 3M5 3h6v6"/></svg></a>
-          <a class="btn fl" href="#freelance">Open for freelance</a>
         </div>
       </div>
       <div class="idcol">
@@ -718,7 +721,7 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
       <div class="cert rv" style="--i:1"><span class="y">05</span><h3>Scientific papers</h3><span class="by">Research and writing support for scientific papers and competitions, from a team leader whose research group won three national paper awards.</span></div>
       <div class="cert rv" style="--i:2"><span class="y">06</span><h3>And more</h3><span class="by">PLC and HMI programming, control panels and other technical needs. If it is engineering, ask me.</span></div>
     </div>
-    <div class="cta" style="margin-top:36px"><a class="btn fl" href="https://www.linkedin.com/in/hadicahyadi" target="_blank" rel="noopener">Message me on LinkedIn <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11 11 3M5 3h6v6"/></svg></a></div>
+    <div class="cta" style="margin-top:36px"><a class="btn" href="#projects">View projects</a><a class="btn" href="#education">View achievements</a><a class="btn fl" href="https://www.linkedin.com/in/hadicahyadi" target="_blank" rel="noopener">Message me on LinkedIn <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11 11 3M5 3h6v6"/></svg></a></div>
   </div>
 </section>
 
