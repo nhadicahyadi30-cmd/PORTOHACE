@@ -345,6 +345,17 @@ ul{margin:0}
 /* achievements */
 .sbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);margin-bottom:50px}
 .alist{border-top:1px solid var(--line)}
+.aw{display:grid;grid-template-columns:130px minmax(0,1fr) 110px;gap:24px;align-items:center;padding:20px 8px;border-bottom:1px solid var(--line);position:relative;transition:padding .3s,background .3s}
+.aw::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--g);transition:width .3s}
+.aw:hover{background:rgba(var(--gr),.05);padding-left:24px}
+.aw:hover::before{width:4px}
+.aw .ar{font-family:var(--disp);font-weight:700;font-size:28px;line-height:1;text-transform:uppercase;color:var(--ink);transition:color .3s}
+.aw:hover .ar{color:var(--g)}
+.aw .at{font-weight:600;font-size:17px;line-height:1.25}
+.aw .ai{margin-top:4px;font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.aw .nt{margin-top:6px;font-size:14px;color:var(--mute)}
+.aw .ay{font-family:var(--mono);font-size:13px;letter-spacing:.12em;color:var(--g);text-align:right}
+@media (max-width:700px){.aw{grid-template-columns:1fr;gap:6px}.aw .ay{text-align:left}}
 .arow{display:grid;grid-template-columns:250px minmax(0,1fr) 130px;gap:30px;align-items:center;padding:34px 8px;border-bottom:1px solid var(--line);position:relative;transition:padding .3s,background .3s;cursor:default}
 .arow::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--g);transition:width .3s}
 .arow:hover{background:rgba(var(--gr),.05);padding-left:28px}
@@ -686,14 +697,14 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
     <div class="ph"><span class="lab g">05 / Education</span><h1>Education</h1><p>Applied engineering education in automation, plus the competitions, research and organizations that shaped it from 2020 to 2024.</p></div>
     <div class="sbar">
       <div class="stat"><b>3.49</b><span>GPA out of 4.00</span></div>
-      <div class="stat"><b><em class="cnt" data-to="7">7</em></b><span>Competition and research recognitions</span></div>
+      <div class="stat"><b><em class="cnt" data-to="23">23</em></b><span>Awards and recognitions, 8 first places</span></div>
       <div class="stat"><b><em class="cnt" data-to="5">5</em></b><span>Organizations led or served</span></div>
     </div>
     <div class="edu">
       <div><span class="lab g">Degree</span><h2>D4 Automation Engineering</h2><p>Politeknik Perkapalan Negeri Surabaya, 2020 to 2024. GPA 3.49 / 4.00.</p><p>Final project received research funding in collaboration with the National Research and Innovation Agency (BRIN).</p></div>
       <div><span class="lab">Timeline</span><div class="big">2020<br>2024</div></div>
     </div>
-    <div class="sh"><h2>Competitions and awards</h2></div>
+    <div class="sh"><h2>Honors and awards</h2></div>
     <div class="alist" id="alist"></div>
     <div class="sh"><h2>Organizations and leadership</h2></div>
     <div class="alist" id="olist"></div>
@@ -857,14 +868,168 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
   var byId={}; P.forEach(function(p){byId[p.id]=p;});
 
   var ACH=[
-   {y:"2025",r:"Top 15",t:"Hackathon Science HackinFest",i:"PT Sucofindo"},
-   {y:"2024",r:"BRIN",t:"Final Project Research Funding and Collaboration",i:"National Research and Innovation Agency (BRIN)"},
-   {y:"2024",r:"Top 12",t:"Singapore Autonomous Underwater Vehicle Challenge (SAUVC)",i:"Polytechnic of Singapore",n:"Top 12 among 50 teams from 30 countries."},
-   {y:"2023",r:"Silver",t:"Pekan Ilmiah Mahasiswa Nasional (PIMNAS), Karsa Cipta Category",i:"PUSPRESNAS"},
-   {y:"2023",r:"1st",t:"Indonesian Underwater Robot Contest (KRI)",i:"PUSPRESNAS"},
-   {y:"2022",r:"1st",t:"Autonomous Vessel Design and Performance Competition (KKCTBN)",i:"PUSPRESNAS"},
-   {y:"2022",r:"2nd",t:"National Maritime Innovation Competition (MMENE)",i:"University of Indonesia"}
-  ];
+ {
+  "y": "2025",
+  "r": "Top 15",
+  "t": "Hackathon Science HackinFest",
+  "i": "PT Sucofindo",
+  "n": ""
+ },
+ {
+  "y": "May 2024",
+  "r": "Funded",
+  "t": "Student Creativity Program, Creative Initiatives",
+  "i": "Direktorat Jenderal Vokasi",
+  "n": "Research: Rancang Bangun Kontrol Cerdas Attitude Hold Position Menggunakan Metode ANFIS pada USV Terintegrasi GCS"
+ },
+ {
+  "y": "2024",
+  "r": "Funded",
+  "t": "Final Project Research Funding and Collaboration",
+  "i": "National Research and Innovation Agency (BRIN)",
+  "n": ""
+ },
+ {
+  "y": "Apr 2024",
+  "r": "Top 15",
+  "t": "Singapore Autonomous Underwater Vehicle Challenge (SAUVC)",
+  "i": "Polytechnic of Singapore",
+  "n": ""
+ },
+ {
+  "y": "Nov 2023",
+  "r": "Silver",
+  "t": "Pekan Ilmiah Mahasiswa Nasional (PIMNAS), Poster Category",
+  "i": "Pusat Prestasi Nasional, Kemendikbudristek",
+  "n": ""
+ },
+ {
+  "y": "Sep 2023",
+  "r": "1st",
+  "t": "National Ships Design and Boat Race Competition (NASDARC)",
+  "i": "Institut Teknologi Sepuluh Nopember",
+  "n": ""
+ },
+ {
+  "y": "Jun 2023",
+  "r": "1st",
+  "t": "Indonesian Underwater Robot Contest (KRI)",
+  "i": "Pusat Prestasi Nasional, Kemendikbudristek",
+  "n": ""
+ },
+ {
+  "y": "May 2023",
+  "r": "Funded",
+  "t": "Student Creativity Program, Creative Initiatives",
+  "i": "Direktorat Jenderal Vokasi",
+  "n": ""
+ },
+ {
+  "y": "Jan 2023",
+  "r": "1st",
+  "t": "National Innovation Week Competition",
+  "i": "Sentra HKI Universitas Darussalam Gontor",
+  "n": ""
+ },
+ {
+  "y": "Dec 2022",
+  "r": "Speaker",
+  "t": "Presenter, Writing, Research and Idea Development Training",
+  "i": "UKM Penalaran PPNS",
+  "n": ""
+ },
+ {
+  "y": "Nov 2022",
+  "r": "1st",
+  "t": "Autonomous Surface Vehicle Prototype and Performance (KKCTBN)",
+  "i": "Pusat Prestasi Nasional, Kemendikbudristek",
+  "n": ""
+ },
+ {
+  "y": "Nov 2022",
+  "r": "2nd",
+  "t": "Marine and Mechanical Innovation (MMENE)",
+  "i": "Universitas Indonesia",
+  "n": ""
+ },
+ {
+  "y": "Nov 2022",
+  "r": "Best",
+  "t": "Best Prototype of Autonomous Semi Submarine Drone (KKCTBN)",
+  "i": "Pusat Prestasi Nasional, Kemendikbudristek",
+  "n": ""
+ },
+ {
+  "y": "Oct 2022",
+  "r": "Mentor",
+  "t": "Scientific Poster Mentor, Armada Prestasi",
+  "i": "Badan Eksekutif Mahasiswa",
+  "n": ""
+ },
+ {
+  "y": "Sep 2022",
+  "r": "1st",
+  "t": "Scientific Writing Competition ENSIGHT",
+  "i": "UPN Veteran Jawa Timur",
+  "n": ""
+ },
+ {
+  "y": "Apr 2022",
+  "r": "1st",
+  "t": "Scientific Writing Competition BRITIC",
+  "i": "Institut Teknologi Nasional Malang",
+  "n": ""
+ },
+ {
+  "y": "Mar 2022",
+  "r": "3rd",
+  "t": "Scientific Poster Competition ELCCO",
+  "i": "Universitas Udayana",
+  "n": ""
+ },
+ {
+  "y": "Jan 2022",
+  "r": "3rd",
+  "t": "Scientific Writing Competition LOKALISM",
+  "i": "LPPM Institut Telkom Surabaya",
+  "n": ""
+ },
+ {
+  "y": "Oct 2021",
+  "r": "1st",
+  "t": "Autonomous Surface Vehicle Prototype and Performance (KKCTBN)",
+  "i": "Pusat Prestasi Nasional, Kemendikbudristek",
+  "n": ""
+ },
+ {
+  "y": "Oct 2021",
+  "r": "3rd",
+  "t": "Poster Category (KKCTBN)",
+  "i": "Pusat Prestasi Nasional",
+  "n": ""
+ },
+ {
+  "y": "Oct 2021",
+  "r": "Best",
+  "t": "Best Design of Prototype Autonomous Semi Submarine Vehicle (KKCTBN)",
+  "i": "Pusat Prestasi Nasional, Kemendikbudristek",
+  "n": ""
+ },
+ {
+  "y": "Sep 2021",
+  "r": "2nd",
+  "t": "Scientific Poster Competition ACUSTIC",
+  "i": "Universitas Sriwijaya",
+  "n": ""
+ },
+ {
+  "y": "May 2021",
+  "r": "1st",
+  "t": "Scientific Writing Competition OBSERVASI",
+  "i": "UKM Penalaran PPNS",
+  "n": ""
+ }
+];
   var CERT=[
    {y:"2024",t:"Industrial Automation Engineer",b:"Certified by BNSP"},
    {y:"2024",t:"Solar Energy Bootcamp",b:"Kelas Engineering"},
@@ -1077,7 +1242,7 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
   $("#skillresult").addEventListener("click",function(e){ var b=e.target.closest("[data-open]"); if(!b) return; var it=itemMap[sel]; openDrawer(+b.getAttribute("data-open"),it?it.p.map(function(x){return byId[x];}):P,b); });
 
   /* ================= ACHIEVEMENTS + TRAINING ================= */
-  $("#alist").innerHTML=ACH.map(function(a,i){ return '<div class="arow rv" style="--i:'+(i%3)+'"><div class="rk">'+a.r+'</div><div><div class="tt">'+a.t+'</div><div class="ii">'+a.i+'</div>'+(a.n?'<p class="nt">'+a.n+'</p>':'')+'</div><div class="yr">'+a.y+'</div></div>'; }).join("");
+  $("#alist").innerHTML=ACH.map(function(a,i){ return '<div class="aw rv" style="--i:'+(i%3)+'"><div class="ar">'+a.r+'</div><div><div class="at">'+a.t+'</div><div class="ai">'+a.i+'</div>'+(a.n?'<p class="nt">'+a.n+'</p>':'')+'</div><div class="ay">'+a.y+'</div></div>'; }).join("");
   $("#olist").innerHTML=ORG.map(function(o,i){ return '<div class="arow rv" style="--i:'+(i%3)+'"><div class="rk">Org</div><div><div class="tt">'+o.t+'</div><div class="ii">'+o.o+'</div><p class="nt">'+o.g[0].i[0]+'</p></div><div class="yr">'+o.w+'</div></div>'; }).join("");
   $("#certs").innerHTML=CERT.map(function(c,i){ return '<div class="cert rv" style="--i:'+(i%3)+'"><span class="y">'+c.y+'</span><h3>'+c.t+'</h3><span class="by">'+c.b+'</span></div>'; }).join("");
 
