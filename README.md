@@ -29,6 +29,6 @@ Manual: `python build.py`, lalu `cd dist` dan `python -m http.server 8000`.
 - [ ] Foto proyek
 - [ ] Hasil kerja Production Engineer
 - [ ] Testimoni
-- [ ] Kontak WhatsApp/email
+- [ ] Kontak WhatsApp/email (juga untuk halaman Freelance)
 - [ ] Toggle ID/EN
 - [ ] CV versi tanpa tanggal lahir

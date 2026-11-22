@@ -83,6 +83,14 @@ ul{margin:0}
 #nav a{position:relative;padding:20px 16px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--mute);white-space:nowrap;transition:color .15s}
 #nav a:hover{color:var(--ink)}
 #nav a.on{color:var(--ink)}
+#nav a.fl{color:var(--g)}
+#nav a.fl:hover,#nav a.fl.on{color:var(--ink)}
+.btn.fl{border-color:var(--g);color:var(--g)}
+.btn.fl:hover{background:var(--g);color:var(--on-g)}
+.fl-live{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--g);margin-top:18px}
+.fl-live i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(var(--gr),.5);animation:flp 2s infinite}
+@keyframes flp{70%{box-shadow:0 0 0 10px rgba(var(--gr),0)}100%{box-shadow:0 0 0 0 rgba(var(--gr),0)}}
+@media (prefers-reduced-motion:reduce){.fl-live i{animation:none}}
 #nav a.on::after{content:"";position:absolute;left:16px;right:16px;bottom:-1px;height:2px;background:var(--g);box-shadow:0 0 10px var(--g)}
 #where{position:fixed;left:28px;bottom:22px;z-index:30;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);display:flex;gap:10px;align-items:center;mix-blend-mode:difference}
 #where b{color:var(--ink);font-weight:500}
@@ -528,11 +536,12 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
       <a href="#skills" data-route="skills">Skills</a>
       <a href="#education" data-route="education">Education</a>
       <a href="#training" data-route="training">Training</a>
+      <a href="#freelance" data-route="freelance" class="fl">Freelance</a>
     </nav>
     <button class="tgl" id="theme" type="button" aria-label="Switch to light mode"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg></button>
   </div>
 </header>
-<div id="where" aria-hidden="true"><b id="w-n">01</b> / 06 <i></i><span id="w-t">About</span></div>
+<div id="where" aria-hidden="true"><b id="w-n">01</b> / 07 <i></i><span id="w-t">About</span></div>
 
 <main id="main">
 
@@ -549,6 +558,7 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
         <div class="cta">
           <div data-cvmenu></div>
           <a class="btn" href="https://www.linkedin.com/in/hadicahyadi" target="_blank" rel="noopener">LinkedIn <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11 11 3M5 3h6v6"/></svg></a>
+          <a class="btn fl" href="#freelance">Open for freelance</a>
         </div>
       </div>
       <div class="idcol">
@@ -636,10 +646,6 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
 <section class="page" id="page-career" hidden>
   <div class="wrap">
     <div class="ph"><span class="lab g">02 / Career</span><h1>Career</h1><p>Four roles since 2023, from automation internships to leading a 40-person technical team.</p></div>
-    <div class="tabs" role="tablist" aria-label="Career type">
-      <button class="tab" role="tab" id="tab-work" aria-selected="true" data-grp="work">Work experience</button>
-      <button class="tab" role="tab" id="tab-org" aria-selected="false" data-grp="org">Organization</button>
-    </div>
     <div class="career">
       <div class="rl" id="rl" role="tablist" aria-label="Roles" aria-orientation="vertical"></div>
       <div class="rd" id="rd" role="tabpanel" aria-live="polite"></div>
@@ -697,6 +703,22 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
     <div class="ph"><span class="lab g">06 / Training</span><h1>Training &amp; certification</h1><p>National certification and bootcamps in automation, solar energy and IoT.</p></div>
     <div class="sh"><h2>Certifications</h2></div>
     <div class="certs" id="certs"></div>
+  </div>
+</section>
+
+<!-- FREELANCE -->
+<section class="page" id="page-freelance" hidden>
+  <div class="wrap">
+    <div class="ph"><span class="lab g">07 / Freelance</span><h1>Freelance</h1><p>Besides my full-time role, I take on selected freelance work. If you have an engineering problem, a prototype to build or a paper to write, let's talk.</p><span class="fl-live"><i></i>Open for freelance projects</span></div>
+    <div class="certs">
+      <div class="cert rv" style="--i:0"><span class="y">01</span><h3>Software developer</h3><span class="by">Desktop and web tools, dashboards and database-backed monitoring systems (VB.NET, SQL), plus embedded firmware for ESP32 and microcontrollers.</span></div>
+      <div class="cert rv" style="--i:1"><span class="y">02</span><h3>Prototyping</h3><span class="by">From idea to working prototype: microcontroller-based devices, automatic machines, 3D-printed parts and robotics builds.</span></div>
+      <div class="cert rv" style="--i:2"><span class="y">03</span><h3>Technical drafting</h3><span class="by">2D technical drawings and 3D models in Autodesk Fusion 360, and electrical panel layouts in EPLAN.</span></div>
+      <div class="cert rv" style="--i:0"><span class="y">04</span><h3>Consultation</h3><span class="by">Maintenance planning, preventive maintenance systems, spare parts control, electrical and utility reliability, and automation retrofits.</span></div>
+      <div class="cert rv" style="--i:1"><span class="y">05</span><h3>Scientific papers</h3><span class="by">Research and writing support for scientific papers and competitions, from a team leader whose research group won three national paper awards.</span></div>
+      <div class="cert rv" style="--i:2"><span class="y">06</span><h3>And more</h3><span class="by">PLC and HMI programming, control panels and other technical needs. If it is engineering, ask me.</span></div>
+    </div>
+    <div class="cta" style="margin-top:36px"><a class="btn fl" href="https://www.linkedin.com/in/hadicahyadi" target="_blank" rel="noopener">Message me on LinkedIn <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11 11 3M5 3h6v6"/></svg></a></div>
   </div>
 </section>
 
@@ -878,8 +900,8 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
   setTimeout(finish,DUR+2500);
 
   /* ================= ROUTING ================= */
-  var routes=["about","career","projects","skills","education","training"];
-  var titles={about:"About",career:"Career",projects:"Projects",skills:"Skills",education:"Education",training:"Training"};
+  var routes=["about","career","projects","skills","education","training","freelance"];
+  var titles={about:"About",career:"Career",projects:"Projects",skills:"Skills",education:"Education",training:"Training",freelance:"Freelance"};
   var netOn=false;
   function go(first){
     var r=location.hash.slice(1); if(routes.indexOf(r)<0) r="about";
