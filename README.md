@@ -16,6 +16,10 @@ python3 build.py
 ```
 Nama file CV: `cv/CV_Nurahmad_Hadi_Cahyadi_{Maintenance,Automation,Production}.pdf`
 
+## Jalankan di localhost (Windows)
+Klik dua kali `jalankan.bat`: build otomatis, server jalan di http://localhost:8000 dan browser terbuka.
+Manual: `python build.py`, lalu `cd dist` dan `python -m http.server 8000`.
+
 ## Catatan teknis
 - Tema: `html[data-theme]`, disimpan di localStorage `enh-theme`
 - Routing hash: `#about #career #projects #skills #achievements #training`
