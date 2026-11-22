@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nurahmad Hadi Cahyadi</title>
-<meta name="description" content="Portfolio of Nurahmad Hadi Cahyadi: electrical, maintenance and utility supervisor in manufacturing. Career, projects, skills, achievements and certifications.">
+<meta name="description" content="Portfolio of Nurahmad Hadi Cahyadi: electrical, maintenance and utility supervisor in manufacturing. Career, projects, skills, education and certifications.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -333,11 +333,11 @@ ul{margin:0}
 /* achievements */
 .sbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);margin-bottom:50px}
 .alist{border-top:1px solid var(--line)}
-.arow{display:grid;grid-template-columns:200px minmax(0,1fr) 130px;gap:30px;align-items:center;padding:34px 8px;border-bottom:1px solid var(--line);position:relative;transition:padding .3s,background .3s;cursor:default}
+.arow{display:grid;grid-template-columns:250px minmax(0,1fr) 130px;gap:30px;align-items:center;padding:34px 8px;border-bottom:1px solid var(--line);position:relative;transition:padding .3s,background .3s;cursor:default}
 .arow::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;background:var(--g);transition:width .3s}
 .arow:hover{background:rgba(var(--gr),.05);padding-left:28px}
 .arow:hover::before{width:4px}
-.arow .rk{font-family:var(--disp);font-weight:700;font-size:clamp(54px,7vw,92px);line-height:.85;text-transform:uppercase;color:var(--ink);transition:color .3s}
+.arow .rk{font-family:var(--disp);font-weight:700;font-size:clamp(44px,5.6vw,76px);line-height:.85;text-transform:uppercase;color:var(--ink);transition:color .3s}
 .arow:hover .rk{color:var(--g)}
 .arow .tt{font-family:var(--disp);font-weight:600;font-size:clamp(22px,2.6vw,32px);line-height:1.1;text-transform:uppercase}
 .arow .ii{margin-top:8px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
@@ -526,7 +526,7 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
       <a href="#career" data-route="career">Career</a>
       <a href="#projects" data-route="projects">Projects</a>
       <a href="#skills" data-route="skills">Skills</a>
-      <a href="#achievements" data-route="achievements">Achievements</a>
+      <a href="#education" data-route="education">Education</a>
       <a href="#training" data-route="training">Training</a>
     </nav>
     <button class="tgl" id="theme" type="button" aria-label="Switch to light mode"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg></button>
@@ -671,27 +671,30 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
   </div>
 </section>
 
-<!-- ACHIEVEMENTS -->
-<section class="page" id="page-achievements" hidden>
+<!-- EDUCATION -->
+<section class="page" id="page-education" hidden>
   <div class="wrap">
-    <div class="ph"><span class="lab g">05 / Achievements</span><h1>Achievements</h1><p>National and international robotics, research and innovation results from 2022 to 2025.</p></div>
+    <div class="ph"><span class="lab g">05 / Education</span><h1>Education</h1><p>Applied engineering education in automation, plus the competitions, research and organizations that shaped it from 2020 to 2024.</p></div>
     <div class="sbar">
-      <div class="stat"><b><em class="cnt" data-to="7">7</em></b><span>Recognitions</span></div>
-      <div class="stat"><b><em class="cnt" data-to="2">2</em></b><span>First places</span></div>
-      <div class="stat"><b><em class="cnt" data-to="50">50</em></b><span>Teams from 30 countries at SAUVC 2024</span></div>
+      <div class="stat"><b>3.49</b><span>GPA out of 4.00</span></div>
+      <div class="stat"><b><em class="cnt" data-to="7">7</em></b><span>Competition and research recognitions</span></div>
+      <div class="stat"><b><em class="cnt" data-to="5">5</em></b><span>Organizations led or served</span></div>
     </div>
+    <div class="edu">
+      <div><span class="lab g">Degree</span><h2>D4 Automation Engineering</h2><p>Politeknik Perkapalan Negeri Surabaya, 2020 to 2024. GPA 3.49 / 4.00.</p><p>Final project received research funding in collaboration with the National Research and Innovation Agency (BRIN).</p></div>
+      <div><span class="lab">Timeline</span><div class="big">2020<br>2024</div></div>
+    </div>
+    <div class="sh"><h2>Competitions and awards</h2></div>
     <div class="alist" id="alist"></div>
+    <div class="sh"><h2>Organizations and leadership</h2></div>
+    <div class="alist" id="olist"></div>
   </div>
 </section>
 
 <!-- TRAINING -->
 <section class="page" id="page-training" hidden>
   <div class="wrap">
-    <div class="ph"><span class="lab g">06 / Training</span><h1>Training &amp; certification</h1><p>Formal education plus national certification and bootcamps in automation, solar energy and IoT.</p></div>
-    <div class="edu">
-      <div><span class="lab g">Education</span><h2>D4 Automation Engineering</h2><p>Politeknik Perkapalan Negeri Surabaya, 2020 to 2024.</p><p>Final project received research funding in collaboration with the National Research and Innovation Agency (BRIN).</p></div>
-      <div><span class="lab">Timeline</span><div class="big">2020<br>2024</div></div>
-    </div>
+    <div class="ph"><span class="lab g">06 / Training</span><h1>Training &amp; certification</h1><p>National certification and bootcamps in automation, solar energy and IoT.</p></div>
     <div class="sh"><h2>Certifications</h2></div>
     <div class="certs" id="certs"></div>
   </div>
@@ -736,17 +739,7 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
 
   var WORK=[
    {k:"01",o:"PT Wings Surya",t:"Electrical, Maintenance & Utility Supervisor",w:"Nov 2024 – Present",now:true,
-    g:[{h:"Core responsibilities",i:[
-     "Lead 40 technicians maintaining 64 plastic production machines, 150+ molds, and 20+ utility assets (compressors, chillers, cooling towers) to meet machine availability targets.",
-     "Plan preventive maintenance and manage spare parts procurement and inventory (minimum stock monitoring, demand planning, critical component classification) to ensure uninterrupted machine operations.",
-     "Perform troubleshooting and Root Cause Analysis (RCA) of electrical, control system, and mechanical failures to improve Mean Time Between Failures (MTBF), reduce Mean Time to Repair (MTTR), and maintain equipment reliability.",
-     "Lead installation, commissioning, and handover of production machinery, utility equipment, and production support tools, including electrical, control system, and safety verification.",
-     "Diagnose and repair temperature control modules, power supply units (PSUs), servo drives, Human-Machine Interfaces (HMIs), and PLC I/O expansion modules.",
-     "Replace, configure, and commission electric motors, inverters, Programmable Logic Controllers (PLCs), and HMIs, including wiring, parameter setting, program adjustments, and functional testing.",
-     "Calibrate and test robots, conveyors, weighing systems, packing machines, counters, and color dosing systems to ensure process accuracy.",
-     "Modify mechanical components and electrical systems to improve machine safety and production process efficiency.",
-     "Develop and implement Standard Operating Procedures (SOP), Work Instructions, and Preventive Maintenance standards to improve technician productivity and reduce breakdowns and downtime."]},
-    {h:"Key projects and achievements",i:[
+    g:[{h:"Key projects and achievements",i:[
      "Completed a reverse engineering project for a screw metering doser using an ESP32 microcontroller-based embedded system with a Nextion display, achieving up to 40% savings in procurement costs and installing five units on production machines.",
      "Completed a retrofit of 10 PET injection molding machine hopper dryers with automatic start functionality, overheat protection, and frame modifications for easier maintenance, increasing machine productivity by up to 30% during the initial production period.",
      "Developed and implemented two packer counter systems for PET injection molding machines, reducing labor requirements by the equivalent of four workers per day and lowering development and manufacturing costs by up to 60%.",
@@ -840,7 +833,7 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
 
   var ACH=[
    {y:"2025",r:"Top 15",t:"Hackathon Science HackinFest",i:"PT Sucofindo"},
-   {y:"2024",r:"Funded",t:"Final Project Research Funding and Collaboration",i:"National Research and Innovation Agency (BRIN)"},
+   {y:"2024",r:"BRIN",t:"Final Project Research Funding and Collaboration",i:"National Research and Innovation Agency (BRIN)"},
    {y:"2024",r:"Top 12",t:"Singapore Autonomous Underwater Vehicle Challenge (SAUVC)",i:"Polytechnic of Singapore",n:"Top 12 among 50 teams from 30 countries."},
    {y:"2023",r:"Silver",t:"Pekan Ilmiah Mahasiswa Nasional (PIMNAS), Karsa Cipta Category",i:"PUSPRESNAS"},
    {y:"2023",r:"1st",t:"Indonesian Underwater Robot Contest (KRI)",i:"PUSPRESNAS"},
@@ -885,8 +878,8 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
   setTimeout(finish,DUR+2500);
 
   /* ================= ROUTING ================= */
-  var routes=["about","career","projects","skills","achievements","training"];
-  var titles={about:"About",career:"Career",projects:"Projects",skills:"Skills",achievements:"Achievements",training:"Training"};
+  var routes=["about","career","projects","skills","education","training"];
+  var titles={about:"About",career:"Career",projects:"Projects",skills:"Skills",education:"Education",training:"Training"};
   var netOn=false;
   function go(first){
     var r=location.hash.slice(1); if(routes.indexOf(r)<0) r="about";
@@ -1060,6 +1053,7 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
 
   /* ================= ACHIEVEMENTS + TRAINING ================= */
   $("#alist").innerHTML=ACH.map(function(a,i){ return '<div class="arow rv" style="--i:'+(i%3)+'"><div class="rk">'+a.r+'</div><div><div class="tt">'+a.t+'</div><div class="ii">'+a.i+'</div>'+(a.n?'<p class="nt">'+a.n+'</p>':'')+'</div><div class="yr">'+a.y+'</div></div>'; }).join("");
+  $("#olist").innerHTML=ORG.map(function(o,i){ return '<div class="arow rv" style="--i:'+(i%3)+'"><div class="rk">Org</div><div><div class="tt">'+o.t+'</div><div class="ii">'+o.o+'</div><p class="nt">'+o.g[0].i[0]+'</p></div><div class="yr">'+o.w+'</div></div>'; }).join("");
   $("#certs").innerHTML=CERT.map(function(c,i){ return '<div class="cert rv" style="--i:'+(i%3)+'"><span class="y">'+c.y+'</span><h3>'+c.t+'</h3><span class="by">'+c.b+'</span></div>'; }).join("");
 
   /* ticker of software */

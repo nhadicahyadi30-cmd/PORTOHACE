@@ -26,7 +26,6 @@ Manual: `python build.py`, lalu `cd dist` dan `python -m http.server 8000`.
 - Lanyard: Verlet physics, tali bisa mengendur, sudut card dibatasi ±1,15 rad agar tidak terbalik
 
 ## To-do
-- [ ] Ganti Achievements dengan Education, lalu buat Achievements baru dari LinkedIn (sempat dicoba lalu dikembalikan)
 - [ ] Foto proyek
 - [ ] Hasil kerja Production Engineer
 - [ ] Testimoni
