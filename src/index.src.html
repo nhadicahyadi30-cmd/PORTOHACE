@@ -394,6 +394,25 @@ ul{margin:0}
 .fine{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 #cnote{min-height:1.2em}
 
+
+/* gallery + lightbox */
+.gl{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.gb{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--line2);border-radius:999px;background:none;color:var(--ink2);cursor:pointer;transition:border-color .2s,color .2s}
+.gb:hover{border-color:var(--g);color:var(--g)}
+.dgal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.dgal button{padding:0;border:1px solid var(--line2);background:var(--panel);aspect-ratio:4/3;overflow:hidden;cursor:pointer;border-radius:8px}
+.dgal button:hover{border-color:var(--g)}
+.dgal img{width:100%;height:100%;object-fit:cover;display:block}
+#lb{position:fixed;inset:0;z-index:90;background:rgba(8,8,10,.94);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;padding:56px 70px 40px}
+#lb[hidden]{display:none}
+#lb figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:12px;max-width:100%}
+#lb img{max-width:min(92vw,1200px);max-height:76vh;object-fit:contain;border-radius:6px;background:#111}
+#lb figcaption{font-size:15px;color:#d9d6cf;text-align:center;max-width:70ch}
+#lb .lbb{position:absolute;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:#fff;width:44px;height:44px;border-radius:50%;font-size:22px;line-height:1;cursor:pointer}
+#lb .lbb:hover{border-color:var(--g);color:var(--g)}
+#lb-x{top:14px;right:14px}#lb-p{left:14px;top:50%}#lb-n{right:14px;top:50%}
+#lb-pos{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:#9b978f}
+@media (max-width:700px){#lb{padding:56px 12px 40px}#lb-p{left:6px;top:auto;bottom:10px}#lb-n{right:6px;top:auto;bottom:10px}}
 /* drawer */
 #scrim{position:fixed;inset:0;background:var(--scrim);backdrop-filter:blur(4px);z-index:70;animation:fade .25s both}
 @keyframes fade{from{opacity:0}}
@@ -756,10 +775,13 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
   <div class="metric"><b id="d-mv"></b><span id="d-ml"></span></div>
   <h3>What I did</h3><p id="d-did"></p>
   <h3>Result</h3><p id="d-res"></p>
+  <div id="d-galw" hidden><h3>Documentation</h3><div class="dgal" id="d-gal"></div></div>
   <h3>Tools</h3><div class="tags" id="d-tools"></div>
   <h3>Skills and software</h3><div class="tags" id="d-skills"></div>
   <div class="d-nav"><button class="btn" type="button" id="d-prev">Prev</button><span class="lab" id="d-pos"></span><button class="btn" type="button" id="d-next">Next</button></div>
 </aside>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Image viewer" hidden><button class="lbb" id="lb-x" type="button" aria-label="Close">&times;</button><button class="lbb" id="lb-p" type="button" aria-label="Previous image">&#8249;</button><figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure><button class="lbb" id="lb-n" type="button" aria-label="Next image">&#8250;</button><div id="lb-pos"></div></div>
 
 <script>
 (function(){
@@ -768,6 +790,8 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
   var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches;
   var fine=window.matchMedia&&window.matchMedia("(pointer:fine)").matches;
   var ready=false;
+  var GAL=%%GALLERY%%;
+  function gal(k,t){ return (GAL[k]||[]).filter(function(x){ return !t||x.t===t; }); }
 
   /* ================= DATA ================= */
   var CV=[["Maintenance Engineer / Planner / Supervisor","Maintenance"],["Automation / Electrical Engineer","Automation"],["Production Supervisor","Production"]];
@@ -868,174 +892,36 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
   var byId={}; P.forEach(function(p){byId[p.id]=p;});
 
   var ACH=[
- {
-  "y": "2025",
-  "r": "Top 15",
-  "t": "Hackathon Science HackinFest",
-  "i": "PT Sucofindo",
-  "n": ""
- },
- {
-  "y": "May 2024",
-  "r": "Funded",
-  "t": "Student Creativity Program, Creative Initiatives",
-  "i": "Direktorat Jenderal Vokasi",
-  "n": "Research: Rancang Bangun Kontrol Cerdas Attitude Hold Position Menggunakan Metode ANFIS pada USV Terintegrasi GCS"
- },
- {
-  "y": "2024",
-  "r": "Funded",
-  "t": "Final Project Research Funding and Collaboration",
-  "i": "National Research and Innovation Agency (BRIN)",
-  "n": ""
- },
- {
-  "y": "Apr 2024",
-  "r": "Top 12",
-  "t": "Singapore Autonomous Underwater Vehicle Challenge (SAUVC)",
-  "i": "Polytechnic of Singapore",
-  "n": ""
- },
- {
-  "y": "Nov 2023",
-  "r": "Silver",
-  "t": "Pekan Ilmiah Mahasiswa Nasional (PIMNAS), Karsa Cipta Category",
-  "i": "Pusat Prestasi Nasional, Kemendikbudristek",
-  "n": ""
- },
- {
-  "y": "Sep 2023",
-  "r": "1st",
-  "t": "National Ships Design and Boat Race Competition (NASDARC)",
-  "i": "Institut Teknologi Sepuluh Nopember",
-  "n": ""
- },
- {
-  "y": "Jun 2023",
-  "r": "1st",
-  "t": "Indonesian Underwater Robot Contest (KRI)",
-  "i": "Pusat Prestasi Nasional, Kemendikbudristek",
-  "n": ""
- },
- {
-  "y": "May 2023",
-  "r": "Funded",
-  "t": "Student Creativity Program, Creative Initiatives",
-  "i": "Direktorat Jenderal Vokasi",
-  "n": ""
- },
- {
-  "y": "Jan 2023",
-  "r": "1st",
-  "t": "National Innovation Week Competition",
-  "i": "Sentra HKI Universitas Darussalam Gontor",
-  "n": ""
- },
- {
-  "y": "Dec 2022",
-  "r": "Speaker",
-  "t": "Presenter, Writing, Research and Idea Development Training",
-  "i": "UKM Penalaran PPNS",
-  "n": ""
- },
- {
-  "y": "Nov 2022",
-  "r": "1st",
-  "t": "Autonomous Surface Vehicle Prototype and Performance (KKCTBN)",
-  "i": "Pusat Prestasi Nasional, Kemendikbudristek",
-  "n": ""
- },
- {
-  "y": "Nov 2022",
-  "r": "2nd",
-  "t": "Marine and Mechanical Innovation (MMENE)",
-  "i": "Universitas Indonesia",
-  "n": ""
- },
- {
-  "y": "Nov 2022",
-  "r": "Best",
-  "t": "Best Prototype of Autonomous Semi Submarine Drone (KKCTBN)",
-  "i": "Pusat Prestasi Nasional, Kemendikbudristek",
-  "n": ""
- },
- {
-  "y": "Oct 2022",
-  "r": "Mentor",
-  "t": "Scientific Poster Mentor, Armada Prestasi",
-  "i": "Badan Eksekutif Mahasiswa",
-  "n": ""
- },
- {
-  "y": "Sep 2022",
-  "r": "1st",
-  "t": "Scientific Writing Competition ENSIGHT",
-  "i": "UPN Veteran Jawa Timur",
-  "n": ""
- },
- {
-  "y": "Apr 2022",
-  "r": "1st",
-  "t": "Scientific Writing Competition BRITIC",
-  "i": "Institut Teknologi Nasional Malang",
-  "n": ""
- },
- {
-  "y": "Mar 2022",
-  "r": "3rd",
-  "t": "Scientific Poster Competition ELCCO",
-  "i": "Universitas Udayana",
-  "n": ""
- },
- {
-  "y": "Jan 2022",
-  "r": "3rd",
-  "t": "Scientific Writing Competition LOKALISM",
-  "i": "LPPM Institut Telkom Surabaya",
-  "n": ""
- },
- {
-  "y": "Oct 2021",
-  "r": "1st",
-  "t": "Autonomous Surface Vehicle Prototype and Performance (KKCTBN)",
-  "i": "Pusat Prestasi Nasional, Kemendikbudristek",
-  "n": ""
- },
- {
-  "y": "Oct 2021",
-  "r": "3rd",
-  "t": "Poster Category (KKCTBN)",
-  "i": "Pusat Prestasi Nasional",
-  "n": ""
- },
- {
-  "y": "Oct 2021",
-  "r": "Best",
-  "t": "Best Design of Prototype Autonomous Semi Submarine Vehicle (KKCTBN)",
-  "i": "Pusat Prestasi Nasional, Kemendikbudristek",
-  "n": ""
- },
- {
-  "y": "Sep 2021",
-  "r": "2nd",
-  "t": "Scientific Poster Competition ACUSTIC",
-  "i": "Universitas Sriwijaya",
-  "n": ""
- },
- {
-  "y": "May 2021",
-  "r": "1st",
-  "t": "Scientific Writing Competition OBSERVASI",
-  "i": "UKM Penalaran PPNS",
-  "n": ""
- }
+ {"k": "aw-hackathon-science-hackinfest-2025", "y": "2025", "r": "Top 15", "t": "Hackathon Science HackinFest", "i": "PT Sucofindo", "n": ""},
+ {"k": "aw-student-creativity-program-cre-may-2024", "y": "May 2024", "r": "Funded", "t": "Student Creativity Program, Creative Initiatives", "i": "Direktorat Jenderal Vokasi", "n": "Research: Rancang Bangun Kontrol Cerdas Attitude Hold Position Menggunakan Metode ANFIS pada USV Terintegrasi GCS"},
+ {"k": "aw-final-project-research-funding-2024", "y": "2024", "r": "Funded", "t": "Final Project Research Funding and Collaboration", "i": "National Research and Innovation Agency (BRIN)", "n": ""},
+ {"k": "aw-singapore-autonomous-underwate-apr-2024", "y": "Apr 2024", "r": "Top 12", "t": "Singapore Autonomous Underwater Vehicle Challenge (SAUVC)", "i": "Polytechnic of Singapore", "n": ""},
+ {"k": "aw-pekan-ilmiah-mahasiswa-nasiona-nov-2023", "y": "Nov 2023", "r": "Silver", "t": "Pekan Ilmiah Mahasiswa Nasional (PIMNAS), Karsa Cipta Category", "i": "Pusat Prestasi Nasional, Kemendikbudristek", "n": ""},
+ {"k": "aw-national-ships-design-and-boat-sep-2023", "y": "Sep 2023", "r": "1st", "t": "National Ships Design and Boat Race Competition (NASDARC)", "i": "Institut Teknologi Sepuluh Nopember", "n": ""},
+ {"k": "aw-indonesian-underwater-robot-co-jun-2023", "y": "Jun 2023", "r": "1st", "t": "Indonesian Underwater Robot Contest (KRI)", "i": "Pusat Prestasi Nasional, Kemendikbudristek", "n": ""},
+ {"k": "aw-student-creativity-program-cre-may-2023", "y": "May 2023", "r": "Funded", "t": "Student Creativity Program, Creative Initiatives", "i": "Direktorat Jenderal Vokasi", "n": ""},
+ {"k": "aw-national-innovation-week-compe-jan-2023", "y": "Jan 2023", "r": "1st", "t": "National Innovation Week Competition", "i": "Sentra HKI Universitas Darussalam Gontor", "n": ""},
+ {"k": "aw-presenter-writing-research-and-dec-2022", "y": "Dec 2022", "r": "Speaker", "t": "Presenter, Writing, Research and Idea Development Training", "i": "UKM Penalaran PPNS", "n": ""},
+ {"k": "aw-autonomous-surface-vehicle-pro-nov-2022", "y": "Nov 2022", "r": "1st", "t": "Autonomous Surface Vehicle Prototype and Performance (KKCTBN)", "i": "Pusat Prestasi Nasional, Kemendikbudristek", "n": ""},
+ {"k": "aw-marine-and-mechanical-innovati-nov-2022", "y": "Nov 2022", "r": "2nd", "t": "Marine and Mechanical Innovation (MMENE)", "i": "Universitas Indonesia", "n": ""},
+ {"k": "aw-best-prototype-of-autonomous-s-nov-2022", "y": "Nov 2022", "r": "Best", "t": "Best Prototype of Autonomous Semi Submarine Drone (KKCTBN)", "i": "Pusat Prestasi Nasional, Kemendikbudristek", "n": ""},
+ {"k": "aw-scientific-poster-mentor-armad-oct-2022", "y": "Oct 2022", "r": "Mentor", "t": "Scientific Poster Mentor, Armada Prestasi", "i": "Badan Eksekutif Mahasiswa", "n": ""},
+ {"k": "aw-scientific-writing-competition-sep-2022", "y": "Sep 2022", "r": "1st", "t": "Scientific Writing Competition ENSIGHT", "i": "UPN Veteran Jawa Timur", "n": ""},
+ {"k": "aw-scientific-writing-competition-apr-2022", "y": "Apr 2022", "r": "1st", "t": "Scientific Writing Competition BRITIC", "i": "Institut Teknologi Nasional Malang", "n": ""},
+ {"k": "aw-scientific-poster-competition-mar-2022", "y": "Mar 2022", "r": "3rd", "t": "Scientific Poster Competition ELCCO", "i": "Universitas Udayana", "n": ""},
+ {"k": "aw-scientific-writing-competition-jan-2022", "y": "Jan 2022", "r": "3rd", "t": "Scientific Writing Competition LOKALISM", "i": "LPPM Institut Telkom Surabaya", "n": ""},
+ {"k": "aw-autonomous-surface-vehicle-pro-oct-2021", "y": "Oct 2021", "r": "1st", "t": "Autonomous Surface Vehicle Prototype and Performance (KKCTBN)", "i": "Pusat Prestasi Nasional, Kemendikbudristek", "n": ""},
+ {"k": "aw-poster-category-kkctbn-oct-2021", "y": "Oct 2021", "r": "3rd", "t": "Poster Category (KKCTBN)", "i": "Pusat Prestasi Nasional", "n": ""},
+ {"k": "aw-best-design-of-prototype-auton-oct-2021", "y": "Oct 2021", "r": "Best", "t": "Best Design of Prototype Autonomous Semi Submarine Vehicle (KKCTBN)", "i": "Pusat Prestasi Nasional, Kemendikbudristek", "n": ""},
+ {"k": "aw-scientific-poster-competition-sep-2021", "y": "Sep 2021", "r": "2nd", "t": "Scientific Poster Competition ACUSTIC", "i": "Universitas Sriwijaya", "n": ""},
+ {"k": "aw-scientific-writing-competition-may-2021", "y": "May 2021", "r": "1st", "t": "Scientific Writing Competition OBSERVASI", "i": "UKM Penalaran PPNS", "n": ""}
 ];
   var CERT=[
-   {y:"2024",t:"Industrial Automation Engineer",b:"Certified by BNSP"},
-   {y:"2024",t:"Solar Energy Bootcamp",b:"Kelas Engineering"},
-   {y:"2022",t:"Electronic and IoT Bootcamp",b:"Indobot Academy"},
-   {y:"2021",t:"Junior Office Operator",b:"Certified by BNSP"},
-   {y:"2021",t:"Junior Graphic Designer",b:"Certified by BNSP"}
+   {k:"c-industrial-automation-engineer-2024",y:"2024",t:"Industrial Automation Engineer",b:"Certified by BNSP"},
+   {k:"c-solar-energy-bootcamp-2024",y:"2024",t:"Solar Energy Bootcamp",b:"Kelas Engineering"},
+   {k:"c-electronic-and-iot-bootcamp-2022",y:"2022",t:"Electronic and IoT Bootcamp",b:"Indobot Academy"},
+   {k:"c-junior-office-operator-2021",y:"2021",t:"Junior Office Operator",b:"Certified by BNSP"},
+   {k:"c-junior-graphic-designer-2021",y:"2021",t:"Junior Graphic Designer",b:"Certified by BNSP"}
   ];
 
   /* ================= LOADER ================= */
@@ -1190,6 +1076,8 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
     $("#d-tools").innerHTML=p.tools.map(function(t){return "<span>"+t+"</span>";}).join("");
     var sk=skillsOf[p.id]||[];
     $("#d-skills").innerHTML=sk.length?sk.map(function(s){return '<button type="button" data-skill="'+s+'">'+s+'</button>';}).join(""):'<span>Part of daily work</span>';
+    var pg=gal("p"+p.id); $("#d-galw").hidden=!pg.length;
+    $("#d-gal").innerHTML=pg.map(function(x,j){ return '<button type="button" data-lb="p'+p.id+'" data-i="'+j+'" aria-label="Open image '+(j+1)+'"><img src="'+x.s+'" alt="'+(x.c||p.t)+'" loading="lazy" decoding="async"></button>'; }).join("");
     $("#d-pos").textContent=(i+1)+" / "+curList.length;
     $("#d-prev").disabled=curList.length<2; $("#d-next").disabled=curList.length<2;
     $("#drawer").scrollTop=0;
@@ -1218,6 +1106,23 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
     else if(e.key==="Tab"){ var f=$$("#drawer button:not([disabled])"); if(!f.length) return; var a=f[0], z=f[f.length-1]; if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus();} else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus();} }
   });
 
+  /* ================= LIGHTBOX ================= */
+  var lb=$("#lb"), lbL=[], lbI=0, lbFrom=null;
+  function lbShow(){ var x=lbL[lbI]; $("#lb-img").src=x.s; $("#lb-img").alt=x.c||""; $("#lb-cap").textContent=x.c||""; $("#lb-pos").textContent=(lbI+1)+" / "+lbL.length; var m=lbL.length<2; $("#lb-p").hidden=m; $("#lb-n").hidden=m; }
+  function lbOpen(list,i,from){ if(!list.length) return; lbL=list; lbI=i||0; lbFrom=from||document.activeElement; lbShow(); lb.hidden=false; $("#lb-x").focus(); }
+  function lbClose(){ if(lb.hidden) return; lb.hidden=true; $("#lb-img").removeAttribute("src"); if(lbFrom&&lbFrom.focus) lbFrom.focus(); }
+  function lbStep(d){ if(lbL.length<2) return; lbI=(lbI+d+lbL.length)%lbL.length; lbShow(); }
+  document.addEventListener("click",function(e){ var b=e.target.closest("[data-lb]"); if(!b) return; var k=b.getAttribute("data-lb"), t=b.getAttribute("data-t"); lbOpen(gal(k,t||null),+(b.getAttribute("data-i")||0),b); });
+  $("#lb-x").addEventListener("click",lbClose); $("#lb-p").addEventListener("click",function(){lbStep(-1);}); $("#lb-n").addEventListener("click",function(){lbStep(1);});
+  lb.addEventListener("click",function(e){ if(e.target===lb) lbClose(); });
+  document.addEventListener("keydown",function(e){
+    if(lb.hidden) return;
+    if(e.key==="Escape"||e.key==="ArrowLeft"||e.key==="ArrowRight"||e.key==="Tab"){ e.stopImmediatePropagation(); }
+    if(e.key==="Escape") lbClose(); else if(e.key==="ArrowRight") lbStep(1); else if(e.key==="ArrowLeft") lbStep(-1);
+    else if(e.key==="Tab"){ e.preventDefault(); var f=[$("#lb-x"),$("#lb-p"),$("#lb-n")].filter(function(b){return !b.hidden;}), i=f.indexOf(document.activeElement); f[(i+(e.shiftKey?-1:1)+f.length)%f.length].focus(); }
+  },true);
+  (function(){ var sx=0; lb.addEventListener("touchstart",function(e){ sx=e.changedTouches[0].clientX; },{passive:true}); lb.addEventListener("touchend",function(e){ var dx=e.changedTouches[0].clientX-sx; if(Math.abs(dx)>50) lbStep(dx<0?1:-1); },{passive:true}); })();
+
   /* ================= SKILLS ================= */
   var sel="TIA Portal";
   function renderSkills(){
@@ -1242,9 +1147,10 @@ html[data-theme="dark"] .i-moon,html[data-theme="light"] .i-sun{display:none}
   $("#skillresult").addEventListener("click",function(e){ var b=e.target.closest("[data-open]"); if(!b) return; var it=itemMap[sel]; openDrawer(+b.getAttribute("data-open"),it?it.p.map(function(x){return byId[x];}):P,b); });
 
   /* ================= ACHIEVEMENTS + TRAINING ================= */
-  $("#alist").innerHTML=ACH.map(function(a,i){ return '<div class="aw rv" style="--i:'+(i%3)+'"><div class="ar">'+a.r+'</div><div><div class="at">'+a.t+'</div><div class="ai">'+a.i+'</div>'+(a.n?'<p class="nt">'+a.n+'</p>':'')+'</div><div class="ay">'+a.y+'</div></div>'; }).join("");
+  function galChips(k){ var ph=gal(k,"photo").length, ce=gal(k,"cert").length, h=""; if(ph) h+='<button class="gb" type="button" data-lb="'+k+'" data-t="photo">Photos &middot; '+ph+'</button>'; if(ce) h+='<button class="gb" type="button" data-lb="'+k+'" data-t="cert">Certificate</button>'; return h?'<div class="gl">'+h+'</div>':""; }
+  $("#alist").innerHTML=ACH.map(function(a,i){ return '<div class="aw rv" style="--i:'+(i%3)+'"><div class="ar">'+a.r+'</div><div><div class="at">'+a.t+'</div><div class="ai">'+a.i+'</div>'+(a.n?'<p class="nt">'+a.n+'</p>':'')+galChips(a.k)+'</div><div class="ay">'+a.y+'</div></div>'; }).join("");
   $("#olist").innerHTML=ORG.map(function(o,i){ return '<div class="arow rv" style="--i:'+(i%3)+'"><div class="rk">Org</div><div><div class="tt">'+o.t+'</div><div class="ii">'+o.o+'</div><p class="nt">'+o.g[0].i[0]+'</p></div><div class="yr">'+o.w+'</div></div>'; }).join("");
-  $("#certs").innerHTML=CERT.map(function(c,i){ return '<div class="cert rv" style="--i:'+(i%3)+'"><span class="y">'+c.y+'</span><h3>'+c.t+'</h3><span class="by">'+c.b+'</span></div>'; }).join("");
+  $("#certs").innerHTML=CERT.map(function(c,i){ return '<div class="cert rv" style="--i:'+(i%3)+'"><span class="y">'+c.y+'</span><h3>'+c.t+'</h3><span class="by">'+c.b+'</span>'+(gal(c.k,"cert").length?'<div class="gl"><button class="gb" type="button" data-lb="'+c.k+'" data-t="cert">View certificate</button></div>':'')+'</div>'; }).join("");
 
   /* ticker of software */
   var tkh=SW.map(function(s){return "<span>"+s.n+"</span>";}).join(""); $("#tk").innerHTML=tkh+tkh;
